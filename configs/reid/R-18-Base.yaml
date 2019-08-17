@@ -1,0 +1,59 @@
+MODEL:
+  TYPE: generalized_rcnn
+  CONV_BODY: FPN.fpn_ResNet18_conv5_body
+  LOAD_IMAGENET_PRETRAINED_WEIGHTS: True
+RESNETS:
+  IMAGENET_PRETRAINED_WEIGHTS: 'pretrained_model/resnet18-5c106cde.pth'
+  FREEZE_AT: 0 # must be True, expect you know what you are doing
+  MODE_TORCHVISION: True # must be True, expect you know what you are doing
+  STRIDE_1X1: False  # if MODE_TORCHVISION is True, STRIDE_1X1 must be False
+  RES5_DILATION: 2 # must be True, expect you know what you are doing
+NUM_GPUS: 1
+SOLVER:
+  WEIGHT_DECAY: 0.0005
+  LR_POLICY: steps_with_decay
+  BASE_LR: 0.001
+  GAMMA: 0.1
+  MAX_ITER: 400
+  STEPS: [0, 80, 180, 300]
+  WARM_UP_ITERS: 18
+  TYPE: Adam
+  BIAS_WEIGHT_DECAY: True  # must be True, expect you know what you are doing
+  BIAS_DOUBLE_LR: False # must be True, expect you know what you are doing
+  WARM_UP_FACTOR: 0.0001
+FPN:
+  FPN_ON: True
+  MULTILEVEL_ROIS: True
+  MULTILEVEL_RPN: True
+  ROI_MAX_LEVEL: 5
+  RPN_MAX_LEVEL: 5
+  DIM: 128
+REID:
+  DETECTRON_OPTIMIZER: True # must be True, expect you know what you are doing
+  BN_COMPLETE: True
+  PRE_PRO_TYPE: 0
+
+  HEIGHT: 384
+  WIDTH: 128
+  TRAIN_BATCH: 64
+  TEST_BATCH: 128
+  TRI_MARGIN: 0.3
+  TRI_NUM_INSTANCES: 4
+
+  STRONG_BASELINE: True # must be True, expect you know what you are doing
+
+  RE_RANKING: True
+  TEST_DISTANCE: 'global'
+
+  RE: True
+
+  FOCALLOSS: False
+  LABElSMOOTH: False
+  LOSS: 'softmax+metric'
+
+  CENTER: 0.0
+  OIM_LABELSMOOTH: False
+  OIM_LABELSMOOTH_WARMUP: 0
+
+  ZERO_GAMMA: False
+  CLASSIFIER_NOBIAS: False #True
