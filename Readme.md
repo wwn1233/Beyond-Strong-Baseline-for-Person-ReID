@@ -93,7 +93,7 @@ Training and Testing on Python3.5
             	......
     ```
 	
-  （3）CUHK03
+   （3）CUHK03
 
     * Download dataset to `data/` from http://www.ee.cuhk.edu.hk/~xgwang/CUHK_identification.html
     * Extract dataset and rename to `cuhk03`. The data structure would like:
@@ -108,7 +108,7 @@ Training and Testing on Python3.5
             	README.md
     ```
 	
-  （4）MSMT17
+   （4）MSMT17
 
     * Download dataset to `data/` from https://www.pkuvmc.com/publications/msmt17.html
     * Extract dataset and rename to `msmt17`. The data structure would like:
